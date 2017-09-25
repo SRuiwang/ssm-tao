@@ -1,10 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- 自定义别名 -->
-	<typeAliases>
-		<package name="com.sr.batis.po" />
-	</typeAliases>
+
+    <!--
+    加载java的配置文件或者声明属性信息
+    该文件中定义的属性先被读取
+    然后properties文件中定义的属性被读取，同名覆盖
+    -->
+    <properties resource="db.properties"/>
+
+    <!-- po类 再 通用mapper自动生成代理时，开启属性名驼峰转下划线自动对应表字段 -->
+    <!-- 不过这块不配也可成功，待研究 -->
+    <!--    <settings>
+            <setting name="mapUnderscoreToCamelCase" value="true" />
+        </settings>-->
+
+    <!-- 自定义别名 -->
+    <typeAliases>
+        <!-- 批量别名定义 -->
+        <!-- package：指定包名称来为该包下的po类声明别名，默认的别名就是类名（首字母大小写都可） -->
+        <package name="com.sr.batis.po"/>
+    </typeAliases>
+
+    <plugins>
+        <!-- 通用mapper -->
+        <plugin interceptor="com.github.abel533.mapperhelper.MapperInterceptor">
+            <property name="mappers" value="com.github.abel533.mapper.Mapper"/>
+        </plugin>
+        <!-- 分页助手 -->
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
+    <!-- 加载映射文件 -->
+    <mappers>
+        <package name="com.sr.batis.mapper"/>
+    </mappers>
 </configuration>

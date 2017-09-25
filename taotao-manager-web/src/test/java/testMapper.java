@@ -16,6 +16,6 @@ public class testMapper {
     @Test
     public void test1() throws Exception {
 
-        System.out.println(userService.findUserById(10));
+        //System.out.println(userService.findUserById(10));
     }
 }

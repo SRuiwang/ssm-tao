@@ -1,32 +1,46 @@
 package com.sr.batis.po;
 
+import javax.annotation.Generated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
-public class User implements Serializable{
+@Table(name = "tb_user")
+public class User implements Serializable {
 
     /*
-    CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(32) NOT NULL COMMENT '用户名称',
-  `birthday` date DEFAULT NULL COMMENT '生日',
-  `sex` char(1) DEFAULT NULL COMMENT '性别',
-  `address` varchar(256) DEFAULT NULL COMMENT '地址',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8
+    CREATE TABLE `tb_user` (
+    `id` bigint(20) NOT NULL AUTO_INCREMENT,
+    `username` varchar(50) NOT NULL COMMENT '用户名',
+    `password` varchar(32) NOT NULL COMMENT '密码，加密存储',
+    `phone` varchar(20) DEFAULT NULL COMMENT '注册手机号',
+    `email` varchar(50) DEFAULT NULL COMMENT '注册邮箱',
+    `created` datetime NOT NULL,
+    `updated` datetime NOT NULL,
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `username` (`username`) USING BTREE,
+    UNIQUE KEY `phone` (`phone`) USING BTREE,
+    UNIQUE KEY `email` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COMMENT='用户表'
      */
-
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String username;
-    private Date birthday;
-    private String sex;
-    private String address;
+    private String password;
+    private String phone;
+    private String email;
+    private Date created;
+    private Date updated;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -38,39 +52,43 @@ public class User implements Serializable{
         this.username = username;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public String getPassword() {
+        return password;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getSex() {
-        return sex;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    public Date getCreated() {
+        return created;
+    }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", birthday=" + birthday +
-                ", sex='" + sex + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }
