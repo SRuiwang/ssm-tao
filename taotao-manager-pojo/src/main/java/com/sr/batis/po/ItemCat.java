@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "tb_item_cat")
-public class ItemCat implements Serializable{
+public class ItemCat extends BasePoJo {
     /*
     CREATE TABLE `tb_item_cat` (
     `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '类目ID',
@@ -28,14 +28,11 @@ public class ItemCat implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private Long parentId;
     private String name;
     private String status;
     private Integer sortOrder;
     private Boolean isParent;
-    private Date created;
-    private Date updated;
 
     public Long getId() {
         return id;
@@ -83,21 +80,5 @@ public class ItemCat implements Serializable{
 
     public void setParent(Boolean parent) {
         isParent = parent;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
     }
 }

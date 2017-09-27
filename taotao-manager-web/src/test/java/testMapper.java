@@ -1,4 +1,3 @@
-import com.sr.service.inte.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration(value = {"classpath:spring/spring-mybatis.xml","classpath:spring/spring-service.xml", "classpath:batis/SqlMapConfig.xml"})
 public class testMapper {
 
-    @Autowired
-    private UserService userService;
 
     @Test
     public void test1() throws Exception {

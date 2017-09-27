@@ -1,22 +1,20 @@
 package com.sr.web.controller;
 
 import com.sr.batis.po.ItemCat;
-import com.sr.service.inte.ItemCatService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
-@RequestMapping("itemcat")
+@RequestMapping("item/cat")
 public class ItemCatController {
 
-    private ItemCatService itemCatService;
+    @RequestMapping(value = "list")
+    public List<ItemCat> getItemCatByParentId(@RequestParam Integer page,@RequestParam Integer rows) {
 
-    @RequestMapping(value = "")
-    public List<ItemCat> getItemCatByParentId(Long parentId) {
-        return itemCatService.findItemCatsByParentId(parentId);
+        return null;
     }
 
 }

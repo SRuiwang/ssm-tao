@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<jsp:include page="/commons/commons-js.jsp"></jsp:include>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>管理员登录</title>
 </head>
@@ -33,7 +34,7 @@
     			$.messager.alert('错误',"用户名密码不正确！");
     			return ;
     		}
-    		window.location.href="/rest/page/index";
+    		window.location.href="${pageContext.request.contextPath}/rest/page/index";
     	});
     </script>
 </body>
